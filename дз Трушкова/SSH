@@ -54,14 +54,14 @@ sudo systemctl restart sshd
 
 Пункт 3-4:
 nano ~/.ssh/config
-имя будет name
-Host name
+имя будет ternar
+Host ternar
 HostName ternar.io
 User student
 Port 240
 
 Пункт 5:
-ssh name
+ssh ternar
 
 задание 3
 Пункт 1:
@@ -74,12 +74,12 @@ ssh-keygen -t ed25519
 они хранятся в .ssh
 
 Пункт 4:
-ssh-copy-id -i ~/.ssh/id_ed25519.pub name
+ssh-copy-id -i ~/.ssh/id_ed25519.pub ternar
 храниться будет в файле:
 ~/.ssh/authorized_keys
 
 Пункт 5:
-ssh name
+ssh ternar
 
 Пункт 6:
 sudo nano /etc/openssh/sshd_config

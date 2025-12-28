@@ -1,8 +1,8 @@
 задание 1
 
 Пункт 1:
-sudo apt update
-sudo apt install iptables -y
+sudo apt-get update
+sudo apt-get install iptables -y
 
 Пункт 2-3:
 по умолчанию подклбчение работает, но возможность подключения может пропасть, если до открытия порта ввести команду:
@@ -18,17 +18,23 @@ tcp, так как udp не подходит. tcp надежнее
 не сохраняются, так как правила iptables хранятся только в оперативке, после перезагрузки все вернется к базовым настройкам
 
 Пункт 7:
-можно использовать iptables-persistent
-sudo apt-get install iptables-persistent -y 
+для сохранения используется файл /etc/sysconfig/iptables.
+sudo sh -c "iptables-save > /etc/sysconfig/iptables"
 
-после установки пакета пересохранение происходит так:
-sudo iptables-save > /etc/iptables/rules.v4
+sudo systemctl daemon-reload
+sudo systemctl enable --now iptables
 
 
 задание 2
 
 Пункт 1:
-sudo apt-get remove iptables-persistent netfilter-persistent -y 
+сохраним текущие правила
+sudo iptables-save > ~/iptables-backup.txt
+
+удаляем
+sudo systemctl sop iptables
+sudo systemctl dusable iptables
+
 sudo apt-get install firewalld -y
 sudo systemctl enable --now firewalld
 
@@ -53,3 +59,4 @@ sudo firewall-cmd --list-services
 sudo firewall-cmd --permanent --add-port=240/tcp
 sudo firewall-cmd --permanent --add-service=samba
 sudo firewall-cmd --reload
+sudo firewall-cmd --list-all --permanent
