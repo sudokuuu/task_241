@@ -1,0 +1,55 @@
+задание 1
+
+Пункт 1:
+sudo apt update
+sudo apt install iptables -y
+
+Пункт 2-3:
+по умолчанию подклбчение работает, но возможность подключения может пропасть, если до открытия порта ввести команду:
+sudo iptables -P INPUT DROP
+
+Пункт 4:
+sudo iptables -A INPUT -p tcp --dport 240 -j ACCEPT
+
+Пункт 5:
+tcp, так как udp не подходит. tcp надежнее
+
+Пункт 6:
+не сохраняются, так как правила iptables хранятся только в оперативке, после перезагрузки все вернется к базовым настройкам
+
+Пункт 7:
+можно использовать iptables-persistent
+sudo apt-get install iptables-persistent -y 
+
+после установки пакета пересохранение происходит так:
+sudo iptables-save > /etc/iptables/rules.v4
+
+
+задание 2
+
+Пункт 1:
+sudo apt-get remove iptables-persistent netfilter-persistent -y 
+sudo apt-get install firewalld -y
+sudo systemctl enable --now firewalld
+
+Пункт 2-3:
+по умолчанию это невозможно, так как разрешено только порту 22, а у меня 240
+восстановим доступ:
+sudo firewall-cmd --add-port=240/tcp
+
+Пункт 4:
+sudo firewall-cmd --list-all
+
+Пункт 5:
+да, можно
+sudo firewall-cmd --add-service=название
+
+Пункт 6-7:
+sudo firewall-cmd --add-service=samba
+sudo firewall-cmd --list-services
+
+Пункт 8:
+чтобы изменения были постоянными, нужно повторить все команды с флагом --permanent
+sudo firewall-cmd --permanent --add-port=240/tcp
+sudo firewall-cmd --permanent --add-service=samba
+sudo firewall-cmd --reload

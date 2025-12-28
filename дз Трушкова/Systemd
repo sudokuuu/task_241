@@ -1,0 +1,191 @@
+Задание 1:
+
+Пункт 1:
+systemd юнит - это файл конфигурации, который описывает как systemd должен управлять службой, сервисом, точкой монтирования и т.д.
+
+основные типы юнитов: .service (службы и сервисы), .mount (точки монтирования фс), .timer (планировщик задач), .target (группы юнитов)
+
+хранятся в /usr/lib/systemd/system/ , если системные, или в /etc/systemd/system/ , если пользовательские 
+
+Пункт 2:
+sudo  systemctl status sshd
+
+она выводит: загружен ли юнит, текущее состояние, документацию, id основного процесса, количество потоков, использование памяти, информацию о контрольной группе, последние запуски журнала
+
+Пункт 3:
+sudo systemctl stop sshd
+sudo systemctl status sshd
+
+Пункт 4:
+sudo systemcctl restart sshd
+
+Пункт 5:
+sudo systemctl disable sshd
+sudo systemctl is-enabled sshd
+
+Пункт 6:
+sudo systemctl enable sshd
+sudo systemctl is-enable sshd
+
+Пункт 7:
+таймеры - это systemd юниты для планирования задач
+
+Задание 2:
+
+Пункт 1:
+файл create_files.sh:
+
+#!/bin/bash
+
+cd ~
+
+# Основная директория для работы
+BASE_DIR="$HOME/scripts_data"
+
+# Проверка существования директории
+if [ -d "$BASE_DIR" ]; then
+    echo "Директория $BASE_DIR уже существует"
+else
+    echo "Создание директории $BASE_DIR"
+    mkdir -p "$BASE_DIR"
+fi
+
+# Создание и заполнение файлов 1-4
+for i in {1..4}; do
+    FILE_PATH="$BASE_DIR/file_$i.txt"
+    
+    # Проверка существования файла
+    if [ -f "$FILE_PATH" ]; then
+        echo "Файл $FILE_PATH уже существует, перезаписываю"
+    else
+        echo "Создание файла $FILE_PATH"
+    fi
+    
+    # Запись информации в файл
+    {
+        echo "Информация в файле file_$i.txt"
+        echo "Дата создания: $(date)"
+        echo "Текущая дата: $(date '+%Y-%m-%d %H:%M:%S')"
+        echo "Версия ядра: $(uname -r)"
+        echo "Имя компьютера: $(hostname)"
+        echo "Пользователь: $(whoami)"
+        echo ""
+        echo "Список файлов в домашнем каталоге пользователя $(whoami)"
+        echo "Домашний каталог: $HOME"
+        echo ""
+        
+        # Список файлов в домашнем каталоге (скрытые тоже)
+        ls -la ~/ | head -20
+        
+        echo ""
+        echo "Полный путь домашнего каталога"
+        echo "$HOME"
+        
+        echo ""
+        echo "Текущая рабочая директория"
+        echo "$(pwd)"
+    } > "$FILE_PATH"
+    
+    echo "Файл $FILE_PATH создан/обновлен"
+done
+
+echo "Скрипт завершил выполнение"
+echo "Все файлы созданы в директории: $BASE_DIR"
+
+Пункт 2:
+файл script.service:
+
+[Unit]
+Description=My custom script service
+After=network.target
+After=multi-user.target
+
+[Service]
+# Указываем пользователя для выполнения скрипта
+User=script_user
+Group=script_user
+
+# Устанавливаем домашнюю директорию пользователя
+WorkingDirectory=~
+
+Type=oneshot
+ExecStart=/bin/bash /usr/local/bin/create_files.sh
+StandardOutput=journal
+StandardError=journal
+
+# Создаем необходимые директории при запуске
+ExecStartPre=/bin/mkdir -p /home/script_user/scripts_data
+ExecStartPre=/bin/chown -R script_user:script_user /home/script_user/scripts_data
+
+[Install]
+WantedBy=multi-user.target
+
+Пункт 3:
+файл  script.timer:
+
+[Unit]
+Description=Run my script every 5 minutes
+Requires=script.service
+
+[Timer]
+# Запуск каждые 5 минут
+OnCalendar=*:0/5
+Unit=script.service
+
+# Случайная задержка до 30 секунд для распределения нагрузки
+RandomizedDelaySec=30
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+
+Пункт 4:
+по умолчанию юниты вызываются от рута
+
+Пункт 5:
+# Создаем пользователя без возможности входа в систему
+sudo useradd -r -s /sbin/nologin -m script_user
+
+# Создаем домашнюю директорию, если она не создалась автоматически
+sudo mkdir -p /home/script_user
+sudo chown script_user:script_user /home/script_user
+
+# Даем права на выполнение скрипта
+sudo chmod 755 /usr/local/bin/create_files.sh
+
+Пункт 6:
+
+[Service]
+User=script_user
+Group=script_user
+
+Пункт 7:
+вот эти строки скрипта отвечают за выполнение в домашней папке:
+
+cd ~
+...
+WorkingDirectory=~
+
+Задание 3:
+
+Пункт 1:
+sudo journalctl -u sshd - посмотреть все логи
+sudo journalctl -u sshd --since today - за текущий день
+sudo journalctl -u sshd --since "2025-12-15" --until "2025-12-16" - за определенные даты
+sudo journalctl -u sshd -p err - только ошибки
+sudo journalctl -u sshd -n 50 - с указанием количества строк
+
+Пункт 2:
+sudo journalctl -f - все журналы в реальном времени
+sudo journalctl -f -e - просмотр с конца в реальном времени
+
+Пункт 3:
+sudo journalctl -u sshd -f - только для службы sshd в реальном времени
+
+Пункт 4:
+да, можно
+например так:
+sudo systemd-cat --identifier=myapp echo "тестовое сообщение"
+
+Пункт 5:
+ответ 0

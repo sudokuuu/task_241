@@ -1,0 +1,91 @@
+задание 1
+Пункт 1:
+22-й порт
+
+Пункт 2:
+да, чтобы это сделать нужно отредактировать файл конфигурации ssh-сервера и изменить значение порта на другое
+
+Пункт 3:
+служба sshd
+
+Пункт 4:
+за его настройку отвечает файл конфигурации с путем etc/openssh/sshd_config
+
+Пункт 5:
+подключаюсь с портом 240
+ssh -p 240 student@ternar.io
+
+Пункт 6:
+для редактирования нужны права рута
+sudo nano /etc/openssh/sshd_config
+добавляем эту строку:
+PermitRootLogin yes
+
+Пункт 7:
+в том же файле меняем значение в строке MaxAuthTries
+
+чтобы изменения применились нужно сохранить файл и перезапустить службу sshd
+sudo systemctl restart sshd
+
+Пункт 8:
+sudo useradd -m -s /bin/bash ssh-user
+sudo passwd ssh-user
+
+ssh -p 240 ssh-user@ternar.io
+
+Пункт 9-10:
+sudo nano /etc/openssh/sshd_config
+добавляем DenyUsers ssh-user
+
+sudo systemctl restart sshd
+
+Пункт 11:
+там хранятся отпечатки публичных ключей серверов, к которым ранее подключался пользователь
+
+задание 2
+Пункт 1:
+пользовательские:
+~/.ssh/config
+системные:
+/etc/openssh/sshd_config
+
+Пункт 2:
+в этом файле перечисляются параметры для различных хостов: имя, порт и т.д.
+
+Пункт 3-4:
+nano ~/.ssh/config
+имя будет name
+Host name
+HostName ternar.io
+User student
+Port 240
+
+Пункт 5:
+ssh name
+
+задание 3
+Пункт 1:
+ssh-ключи - пара ключей, используемых для безопасного входа на удаленные сервера без использования пароля
+пара: публичный ключ и приватный ключ
+они нужны для безопасности
+
+Пункт 2-3:
+ssh-keygen -t ed25519
+они хранятся в .ssh
+
+Пункт 4:
+ssh-copy-id -i ~/.ssh/id_ed25519.pub name
+храниться будет в файле:
+~/.ssh/authorized_keys
+
+Пункт 5:
+ssh name
+
+Пункт 6:
+sudo nano /etc/openssh/sshd_config
+добавим в строку значение no:
+PasswordAuthentication no
+а PubkeyAuthentication с параметром yes
+
+надо сохранить и перезапустить
+sudo systemctl restart sshd
