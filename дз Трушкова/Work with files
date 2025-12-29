@@ -11,7 +11,7 @@ cd papka
 mkdir papka1
 mkdir papka2
 5. Создание файла и запись в него
-vim failik
+nano failik
 cat failik
 6. Перемещение файла между директориями
 mv failik papka1/
@@ -29,7 +29,7 @@ cd ~/papka/papkal
 cat failik
 vimdiff ~/papka/papkal/failik ~/papka/papka2/failiki
 10. Сортировка содержимого файла
-vim numbers
+nano numbers
 sort numbers
 sort -r numbers
 11. Удаление всех папок и файлов
