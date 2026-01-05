@@ -34,13 +34,13 @@ ip route show
 ip neigh show
 
 
-![](/task_241/дз Трушкова/скрины/Network/1.png)
+![](1.png)
 
 
-![](/task_241/дз Трушкова/скрины/Network/2.png)
+![](2.png)
 
 
-![](/task_241/дз Трушкова/скрины/Network/3.png)
+![](3.png)
 
 
 6. Что такое ip адрес?

@@ -90,13 +90,13 @@ PasswordAuthentication no
 надо сохранить и перезапустить
 sudo systemctl restart sshd
 
-![](/task_241/дз Трушкова/скрины/SSH/1.png)
+![](1.png)
 
 
-![](/task_241/дз Трушкова/скрины/SSH/2.png)
+![](2.png)
 
 
-![](/task_241/дз Трушкова/скрины/SSH/3.png)
+![](3.png)
 
 
-![](/task_241/дз Трушкова/скрины/SSH/4.png)
+![](4.png)

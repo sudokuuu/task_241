@@ -31,10 +31,10 @@ sudo systemctl is-enable sshd
 таймеры - это systemd юниты для планирования задач
 
 
-![](/task_241/дз Трушкова/скрины/Systemd/1.png)
+![](1.png)
 
 
-![](/task_241/дз Трушкова/скрины/Systemd/2.png)
+![](2.png)
 
 
 Задание 2:
@@ -174,7 +174,7 @@ cd ~
 WorkingDirectory=~
 
 
-![](/task_241/дз Трушкова/скрины/Systemd/7.png)
+![](7.png)
 
 
 Задание 3:
@@ -201,13 +201,13 @@ sudo systemd-cat --identifier=myapp echo "тестовое сообщение"
 Пункт 5:
 ответ 0
 
-![](/task_241/дз Трушкова/скрины/Systemd/3.png)
+![](3.png)
 
 
-![](/task_241/дз Трушкова/скрины/Systemd/4.png)
+![](4.png)
 
 
-![](/task_241/дз Трушкова/скрины/Systemd/5.png)
+![](5.png)
 
 
-![](/task_241/дз Трушкова/скрины/Systemd/6.png)
+![](6.png)

@@ -66,16 +66,16 @@ read only = yes
 sudo systemctl restart smbd
 
 
-![](/task_241/дз Трушкова/скрины/Samba/1.png)
+![](1.png)
 
 
-![](/task_241/дз Трушкова/скрины/Samba/2.png)
+![](2.png)
 
 
-![](/task_241/дз Трушкова/скрины/Samba/3.png)
+![](3.png)
 
 
-![](/task_241/дз Трушкова/скрины/Samba/4.png)
+![](4.png)
 
 
-![](/task_241/дз Трушкова/скрины/Samba/5.png)
+![](5.png)
