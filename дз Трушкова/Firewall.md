@@ -24,9 +24,14 @@ sudo sh -c "iptables-save > /etc/sysconfig/iptables"
 sudo systemctl daemon-reload
 sudo systemctl enable --now iptables
 
-![](task_241/дз Трушкова/скрины/Firewall/1.png)
-![](task_241/дз Трушкова/скрины/Firewall/2.png)
-![](task_241/дз Трушкова/скрины/Firewall/3.png)
+
+![](/task_241/дз Трушкова/скрины/Firewall/1.png)
+
+
+![](/task_241/дз Трушкова/скрины/Firewall/2.png)
+
+
+![](/task_241/дз Трушкова/скрины/Firewall/3.png)
 
 задание 2
 
@@ -64,5 +69,7 @@ sudo firewall-cmd --permanent --add-service=samba
 sudo firewall-cmd --reload
 sudo firewall-cmd --list-all --permanent
 
-![](task_241/дз Трушкова/скрины/Firewall/4.png)
-![](task_241/дз Трушкова/скрины/Firewall/5.png)
+![](/task_241/дз Трушкова/скрины/Firewall/4.png)
+
+
+![](/task_241/дз Трушкова/скрины/Firewall/5.png)

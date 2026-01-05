@@ -36,8 +36,12 @@ sort -r numbers
 cd ~
 rm -rf papka
 
-![](task_241/дз Трушкова/скрины/Work with files/1.png)
-![](task_241/дз Трушкова/скрины/Work with files/3.png)
+
+![](/task_241/дз Трушкова/скрины/Work with files/1.png)
+
+
+![](/task_241/дз Трушкова/скрины/Work with files/3.png)
+
 
 Задание 2:
 1. Как работают команды >, >>?
@@ -89,4 +93,5 @@ echo "этот вывод не увидим" > /dev/null
 Только stderr в пустоту:
 ls несуществующий_файл 2> /dev/null
 
-![](task_241/дз Трушкова/скрины/Work with files/2.png)
+
+![](/task_241/дз Трушкова/скрины/Work with files/2.png)

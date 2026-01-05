@@ -28,8 +28,11 @@ cat /proc/cpuinfo
 Вывод состояния памяти:
 cat /proc/meminfo
 
-![](task_241/дз Трушкова/скрины/File systems/7.png)
-![](task_241/дз Трушкова/скрины/File systems/8.png)
+![](/task_241/дз Трушкова/скрины/File systems/7.png)
+
+
+![](/task_241/дз Трушкова/скрины/File systems/8.png)
+
 
 Задание 2:
 Пункт 1:
@@ -169,9 +172,19 @@ sudo touch /mnt/raid1/test_file_raid1.txt
 да, можно. во время установки линукс на этапе разметки дисков выбрать ручную разметку, создать raid-устройство, выбрать тип, добавить физ. диски в массив и создать файловую систему на raid-устройстве
 
 
-![](task_241/дз Трушкова/скрины/File systems/1.png)
-![](task_241/дз Трушкова/скрины/File systems/2.png)
-![](task_241/дз Трушкова/скрины/File systems/3.png)
-![](task_241/дз Трушкова/скрины/File systems/4.png)
-![](task_241/дз Трушкова/скрины/File systems/5.png)
-![](task_241/дз Трушкова/скрины/File systems/6.png)
+![](/task_241/дз Трушкова/скрины/File systems/1.png)
+
+
+![](/task_241/дз Трушкова/скрины/File systems/2.png)
+
+
+![](/task_241/дз Трушкова/скрины/File systems/3.png)
+
+
+![](/task_241/дз Трушкова/скрины/File systems/4.png)
+
+
+![](/task_241/дз Трушкова/скрины/File systems/5.png)
+
+
+![](/task_241/дз Трушкова/скрины/File systems/6.png)
