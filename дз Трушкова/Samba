@@ -64,3 +64,9 @@ read only = yes
 
 сохраняем и перезапускаем
 sudo systemctl restart smbd
+
+![](D:/Dev/task_241/дз Трушкова/скрины/Samba/1.png)
+![](D:/Dev/task_241/дз Трушкова/скрины/Samba/2.png)
+![](D:/Dev/task_241/дз Трушкова/скрины/Samba/3.png)
+![](D:/Dev/task_241/дз Трушкова/скрины/Samba/4.png)
+![](D:/Dev/task_241/дз Трушкова/скрины/Samba/5.png)

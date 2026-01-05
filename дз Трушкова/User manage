@@ -56,6 +56,10 @@ sudo chown user1 papka
 Изменение владельца и группы
 sudo chown user1:user1 papka
 
+![](D:/Dev/task_241/дз Трушкова/скрины/User manage/1.png)
+![](D:/Dev/task_241/дз Трушкова/скрины/User manage/2.png)
+![](D:/Dev/task_241/дз Трушкова/скрины/User manage/3.png)
+![](D:/Dev/task_241/дз Трушкова/скрины/User manage/4.png)
 
 Задание 2:
 Пункт 1:
@@ -69,3 +73,5 @@ sudo usermod -s /sbin/nologin user1
 
 Пункт 4:
 Нет, потому что username должен быть уникальным в системе, иначе при создании выдаст ошибку
+
+![](D:/Dev/task_241/дз Трушкова/скрины/User manage/5.png)
